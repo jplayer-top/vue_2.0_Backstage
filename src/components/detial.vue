@@ -92,6 +92,7 @@
 </template>
 <script>
 // 引入基本模板
+
 let echarts = require("echarts/lib/echarts");
 // 引入柱状图组件
 require("echarts/lib/chart/bar");
