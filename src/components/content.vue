@@ -157,7 +157,7 @@ span {
 
 .div-card-company {
   width: 350px;
-  height: 450px;
+  height: 488px;
 }
 
 .div-card-department {

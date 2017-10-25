@@ -281,6 +281,6 @@ input[type="number"] {
 }
 .chart-department {
   width: 400px;
-  height: 400px;
+  height: 457px;
 }
 </style>

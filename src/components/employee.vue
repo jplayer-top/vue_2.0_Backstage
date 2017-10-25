@@ -18,13 +18,8 @@
     <el-table-column
       fixed
       prop="date"
-      label="日期"
+      label="提交日期"
       width="150">
-    </el-table-column>
-    <el-table-column
-      prop="name"
-      label="姓名"
-      width="120">
     </el-table-column>
     <el-table-column
       prop="price"
@@ -43,7 +38,7 @@
     </el-table-column>
     <el-table-column
       prop="goods"
-      label="事项记录"
+      label="花项备注"
       show-overflow-tooltip>
     </el-table-column>
     <el-table-column
@@ -81,7 +76,6 @@ export default {
       tableData4: [
         {
           date: "2016-05-03",
-          name: "王小虎",
           price: "￥33.3",
           spend: "￥100",
           num: "x3",
@@ -101,7 +95,7 @@ export default {
       setTimeout(function() {
         let option = {
           title: {
-            text: "XXX花费组成（单位:元）",
+            text: "王小虎花费组成（单位:元）",
             subtext: "By LMM",
             sublink: "http://www.skyrim.me"
           },
