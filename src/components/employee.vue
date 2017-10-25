@@ -8,7 +8,59 @@
     </el-card>
       </div></el-col>
   <el-col :span="14">
-    <el-card class="card-center"></el-card>
+    <el-card class="card-center">
+        <el-table
+    :data="tableData4"
+    border
+    style="width: 100%"
+    height="400"
+    max-height="400">
+    <el-table-column
+      fixed
+      prop="date"
+      label="日期"
+      width="150">
+    </el-table-column>
+    <el-table-column
+      prop="name"
+      label="姓名"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      prop="price"
+      label="单价"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      prop="spend"
+      label="该项累计"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      prop="num"
+      label="数量"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      prop="goods"
+      label="事项记录"
+      show-overflow-tooltip>
+    </el-table-column>
+    <el-table-column
+      fixed="right"
+      label="操作"
+      width="120">
+      <template scope="scope">
+        <el-button
+          @click.native.prevent="deleteRow(scope.$index, tableData4)"
+          type="text"
+          size="small">
+          移除
+        </el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+    </el-card>
   </el-col>
  </el-row>
 
@@ -25,12 +77,26 @@ let myChart;
 export default {
   name: "Employee",
   data() {
-    return {};
+    return {
+      tableData4: [
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          price: "￥33.3",
+          spend: "￥100",
+          num: "x3",
+          goods: "上海市普陀区金沙江路 1518 弄"
+        }
+      ]
+    };
   },
   mounted() {
     this.initChart();
   },
   methods: {
+    deleteRow(index, rows) {
+      rows.splice(index, 1);
+    },
     initChart() {
       setTimeout(function() {
         let option = {
