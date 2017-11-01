@@ -10,63 +10,92 @@
            </div>
            <div class="div-right-heard">
              <span class="p-text">Oblivion</span>
-              <span class="p-text-size">退出</span> 
+              <span v-on:click="logout" class="p-text-size">退出</span> 
            </div>
         </div>
         </el-col>
     </el-row>
-    <router-view></router-view>
+    <router-view v-if='show'></router-view>
+    <div v-else><login></login></div>
   </div>
 </template>
 <script>
+let app;
+import login from "@/components/login";
 export default {
-  name: 'app',
-  
-}
+  name: "app",
+  components: {
+    login
+  },
+  data() {
+    return {
+      show: false
+    };
+  },
+  mounted() {
+    app = this;
+    this.showUI();
+  },
+  methods: {
+    logout() {
+      if (app != null) {
+        app.show = false;
+      }
+    },
+    showUI() {
+      setTimeout(function() {
+        if (app != null) {
+          app.show = true;
+        }
+      }, 3000);
+    }
+  }
+};
 </script>
 
 <style>
-.grid-content::selection {background: transparent}
+.grid-content::selection {
+  background: transparent;
+}
 #app {
   font-family: "PingFang SC";
-  height: 100%
+  height: 100%;
 }
 .grid-content {
-    display:flex;
-   justify-content:space-between;
-   align-items: center;
-    min-height: 120px;
-    background: #324057;
-    overflow: hidden;    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 120px;
+  background: #324057;
+  overflow: hidden;
 }
-.div-left-heard{
-    display: flex;
-    align-items:center
+.div-left-heard {
+  display: flex;
+  align-items: center;
 }
-.div-right-heard{
-  margin-right: 30px
+.div-right-heard {
+  margin-right: 30px;
 }
-.p-text{
+.p-text {
   text-align: center;
   color: white;
   margin-left: 15px;
-  font-size: 20px
+  font-size: 20px;
 }
-.p-text-size{
-   text-align: center;
+.p-text-size {
+  text-align: center;
   color: white;
   margin-left: 15px;
   font-size: 15px;
   cursor: pointer;
 }
-.p-text-size:hover{
+.p-text-size:hover {
   color: #eee;
-  font-size: 17px
+  font-size: 17px;
 }
-.logo{
+.logo {
   width: 80px;
   height: 80px;
-  margin-left:30px;
+  margin-left: 30px;
 }
- 
 </style>
