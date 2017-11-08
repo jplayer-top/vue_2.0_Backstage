@@ -15,18 +15,14 @@
         </div>
         </el-col>
     </el-row>
-    <router-view v-if='show'></router-view>
-    <div v-else><login></login></div>
+    <router-view ></router-view>
   </div>
 </template>
 <script>
 let app;
-import login from "@/components/login";
+import axios from 'axios'
 export default {
   name: "app",
-  components: {
-    login
-  },
   data() {
     return {
       show: false
@@ -34,26 +30,29 @@ export default {
   },
   mounted() {
     app = this;
-    this.showUI();
   },
   methods: {
     logout() {
-      if (app != null) {
-        app.show = false;
-      }
-    },
-    showUI() {
-      setTimeout(function() {
-        if (app != null) {
-          app.show = true;
-        }
-      }, 3000);
+      // this.$router.push("/login");
+     axios.get('/public/public/send')
+      .then(response=>{
+         console.log(response);
+      })
+      .catch(error=>{
+          console.log(error);
+      })
     }
   }
 };
 </script>
 
 <style>
+.login_ui {
+  position: absolute;
+  top: 120px;
+  bottom: 0;
+  width: 100%;
+}
 .grid-content::selection {
   background: transparent;
 }
